@@ -1,0 +1,202 @@
+//
+// Buttons
+// --------------------------------------------------
+
+.btn-styles(@btn-bg-color, @btn-color: #fff) {
+  color: @btn-color;
+  background-color: darken(@btn-bg-color, 5.5%);
+  #gradient > .vertical(@start-color: @btn-bg-color; @end-color: darken(@btn-bg-color, 5.5%));
+  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+  background-repeat: repeat-x;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: #d5d5d5;
+
+  &:focus {
+    text-decoration: none;
+    border-color: #51a7e8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
+  }
+
+  &:hover {
+    #gradient > .vertical(@start-color: darken(@btn-bg-color, 5.5%); @end-color: darken(@btn-bg-color, 12%));
+    border-color: darken(@btn-bg-color, 19%);
+    outline: none;
+  }
+
+  &:active,
+  &.active {
+    background-color: darken(@btn-bg-color, 12.5%);
+    background-image: none;
+    border-color: darken(@btn-bg-color, 28%);
+
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15)
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: darken(@btn-bg-color, 12%);
+    background-image: none;
+  }
+}
+
+.btn-styles-danger(@btn-start-color, @btn-end-color, @btn-border-color, @btn-color: #fff, @btn-hover-start-color, @btn-hover-end-color, @btn-hover-border-color) {
+  color: @btn-color;
+  background-color: @btn-end-color;
+  #gradient > .vertical(@start-color: @btn-start-color; @end-color: @btn-end-color);
+  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+  background-repeat: repeat-x;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: @btn-border-color;
+
+  &:focus {
+    text-decoration: none;
+    border-color: #51a7e8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
+  }
+
+  &:hover {
+    #gradient > .vertical(@start-color: darken(@btn-hover-start-color, 5%); @end-color: darken(@btn-hover-end-color, 5%));
+    border-color: darken(@btn-hover-border-color, 9%);
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    color: lighten(@btn-color, 100%);
+    outline: none;
+  }
+
+  &:active,
+  &.active {
+    background-color: @btn-hover-end-color;
+    background-image: none;
+    color: lighten(@btn-color, 100%);
+    border-color: darken(@btn-hover-border-color, 13.5%);
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15)
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: darken(@btn-start-color, 12%);
+    background-image: none;
+  }
+}
+
+.btn-styles-light(@btn-start-color, @btn-end-color, @btn-border-color, @btn-color: #fff) {
+  color: @btn-color;
+  background-color: @btn-end-color;
+  #gradient > .vertical(@start-color: @btn-start-color; @end-color: @btn-end-color);
+  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
+  background-repeat: repeat-x;
+  border-color: @btn-border-color;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+
+  &:focus {
+    text-decoration: none;
+    border-color: #51a7e8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(81, 167, 232, 0.5);
+  }
+
+  &:hover {
+    #gradient > .vertical(@start-color: darken(@btn-start-color, 5%); @end-color: darken(@btn-end-color, 5%));
+    border-color: darken(@btn-border-color, 9%);
+    outline: none;
+  }
+
+  &:active,
+  &.active {
+    background-color: @btn-end-color;
+    background-image: none;
+    border-color: darken(@btn-border-color, 13.5%);
+
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15)
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: lighten(@btn-end-color, 10%);
+    background-image: none;
+  }
+}
+
+// Alternate buttons
+// --------------------------------------------------
+.btn-default { .btn-styles(@btn-default-bg, @btn-default-color); }
+.btn-primary { .btn-styles-light(lighten(@btn-primary-bg, 15%), darken(@btn-primary-bg, 7%), darken(@btn-primary-bg, 10%)); }
+.btn-success { .btn-styles-light(#8add6d, #60b044, #5ca941);}
+.btn-info { .btn-styles-light(lighten(@btn-info-bg, 15%), darken(@btn-info-bg, 7%), darken(@btn-info-bg, 10%)); }
+.btn-warning { .btn-styles-light(lighten(@btn-warning-bg, 10%), darken(@btn-warning-bg, 10%), darken(@btn-warning-bg, 12%)); }
+.btn-danger  { .btn-styles-light(lighten(@btn-danger-bg, 10%), darken(@btn-danger-bg, 7%), darken(@btn-danger-bg, 10%)); }
+.btn-danger-alt { .btn-styles-danger(@btn-default-bg, darken(@btn-default-bg, 5.5%), #d5d5d5, #900, lighten(@btn-danger-bg, 10%), darken(@btn-danger-bg, 7%), darken(@btn-danger-bg, 10%)); }
+
+
+.btn-count {
+  color: @btn-default-color;
+  border-color: #d5d5d5;
+
+  &,
+  &:active,
+  &.active,
+  &[disabled],
+  fieldset[disabled] & {
+    background-color: @body-bg;
+    .box-shadow(none);
+  }
+  &,
+  &:hover,
+  &:focus,
+  &:active {
+    //border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    //text-decoration: underline;
+    //background-color: transparent;
+  }
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus {
+      color: @btn-link-disabled-color;
+      text-decoration: none;
+    }
+  }
+}
+
+// Hidden text expander
+.hidden-text-expander {
+  display: block;
+
+  &.inline {
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    margin-left: 5px;
+    line-height: 0
+  }
+
+  a {
+    display: inline-block;
+    height: 12px;
+    padding: 0 5px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 6px;
+    color: #555;
+    text-decoration: none;
+    vertical-align: middle;
+    background: #ddd;
+    border-radius: 1px;
+
+    &:hover {
+      text-decoration: none;
+      background-color: #ccc
+    }
+
+    &:active {
+      color: #fff;
+      background-color: #4183c4
+    }
+  }
+}
