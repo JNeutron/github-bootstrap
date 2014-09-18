@@ -1,7 +1,7 @@
 .page-header {
   position: relative;
   margin-bottom: @line-height-computed;
-  //padding-top: @line-height-computed;
+  padding-top: @line-height-computed;
   padding-bottom: @line-height-computed;
   border-bottom: 1px solid @gray-lighter;
 
@@ -11,5 +11,32 @@
     font-size: 20px;
     font-weight: normal;
     line-height: 28px;
+  }
+
+  .nav {
+    float: right;
+    margin-bottom: -20px;
+
+    > a {
+      float: left;
+      padding: 6px 10px 21px;
+      margin-left: 20px;
+      font-size: 14px;
+      color: #777;
+
+      &:hover {
+        text-decoration: none;
+        color: #333;
+      }
+
+      &.active {
+        color: #333;
+        border-bottom: 2px solid #d26911;
+      }
+
+      .icon {
+        font-size: 16px;
+      }
+    }
   }
 }
